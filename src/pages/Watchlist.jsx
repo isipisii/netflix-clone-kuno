@@ -1,25 +1,40 @@
 import { ApiContext } from "../context/Context"
 import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 
 const Watchlist = () => {
   const { watchList } = useContext(ApiContext)
   const IMG_BASE_URL = "https://image.tmdb.org/t/p/original"
 
-  if (watchList && watchList.length) {
-    console.log(watchList)
-  } else {
-    console.log("watchList is empty")
+  function slideLeft(){
+    let slider = document.getElementById('slider')
+    slider.scrollLeft -= 500;
+  }
+
+  function slideRight(){
+    let slider = document.getElementById('slider')
+    slider.scrollLeft += 500;
   }
 
   return (
     <>
-      {watchList ? 
-        <div className="flex flex-wrap ">
-          <h1>Watchlist</h1>
-          <div>
-            {watchList.map((movie, index) => (
-                <div  className=" w-[250px] sm:w-[270px] inline-block cursor-pointer relative mr-4" key={index}>
+      {watchList.length !== 0 && watchList !== null ?
+      <div className="py-[6rem]">
+        <div>
+          <h2 className="text-white font-medium text-[2rem] mb-[1rem] mx-4 md:mx-8  border-l-[10px] pl-2 border-red-600 ">Watchlist</h2>
+          <div className="relative flex items-center group">
+            <MdChevronLeft
+              onClick={slideLeft}
+              className='bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block'
+              size={40}
+            />
+
+              <div 
+                id={'slider'}  
+                className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative">  
+                {watchList.map((movie, index) => (
+                  <div className=" w-[250px] sm:w-[270px] inline-block cursor-pointer relative mr-4" key={index}>
                     <div className="absolute w-full h-full bg-gradient-to-l from-[#000000b1]"/>
                     <p className="text-white absolute top-1 right-1 text-[1.1rem] font-bold">{movie?.vote_average}</p>
                     <img className="w-full h-full block" src={`${IMG_BASE_URL}${movie?.poster_path}`} alt={movie?.title} />
@@ -28,13 +43,21 @@ const Watchlist = () => {
                         <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">{movie?.title}</p>
                       </Link>
                     </div>
-                  </div>
-              ))}
+                  </div>))}
+              </div>
+
+            <MdChevronRight
+              onClick={slideRight}
+              className='bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block'
+              size={40}
+            />
           </div>
         </div>
+      </div>
         :
-        <div>
-          <h1 className="text-white text-center">There's nothin in here</h1>
+        <div className="w-full h-full px-[1rem] pt-[6rem]">
+          <h2 className="text-white font-medium text-[2rem] mb-[1rem]  border-l-[10px] pl-2 border-red-600 ">Watchlist</h2>
+          <h3 className="text-[#ffffff8b] text-center mt-[3rem]">There's no movie yet</h3>
         </div>
       }
     </>

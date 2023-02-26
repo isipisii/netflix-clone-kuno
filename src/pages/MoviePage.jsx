@@ -25,8 +25,6 @@ const MoviePage = () => {
     fetchMovieData()
   }, [id])
 
-  console.log(watchList)
-  
   return (
   <> 
     {loading ? 
@@ -37,7 +35,7 @@ const MoviePage = () => {
           <div className="w-full sm:h-[100vh] h-[120vh]">
               <div className="w-full h-full relative">
                 {/*-----------BACK DROP---------*/}
-                <div className="absolute w-full h-full bg-gradient-to-r from-[#000000c9]"></div>
+                <div className="absolute w-full h-full bg-gradient-to-r from-black"></div>
                 <img className="w-full h-full object-cover" 
                   src={`${IMG_BASE_URL}${movieDetail?.backdrop_path}`} 
                   alt={movieDetail?.title} 
@@ -48,20 +46,20 @@ const MoviePage = () => {
                 <div className="w-full h-full absolute inset-0 flex items-center justify-center">
 
                   <div className="w-full  p-4 md:p-8">
-                    <h1 className="text-[2.8rem] md:text-[4rem] font-bold text-white">{movieDetail?.title}</h1>
+                    <h1 className="text-[2.8rem] md:text-[4rem] font-bold text-white drop-shadow-[100px] shadow-black">{movieDetail?.title}</h1>
                     <div>
                       <button className="border text-[.9rem] md:text-[1rem] bg-red-600 py-2 px-5 md:px-8 border-red-600 text-white">Play</button>
                       <button 
                         className="border text-[.9rem] md:text-[1rem] py-2
                         px-5 md:px-8 border-gray-300 text-white 
-                        ml-4 hover:bg-[#ffffff2c]"
+                        ml-4 hover:bg-[#ffffff2c] backdrop-blur-lg"
                         onClick={() => {addToWatchList(movieDetail), console.log("clicked")}}
                       >
                         Watch Later
                       </button>
                     </div>
                     <p className="text-[#ffffff9f] mt-4">Released: {movieDetail?.release_date}  •  {movieDetail?.runtime} minutes</p>
-                    <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white">{truncateString(movieDetail?.overview, 150)}</p>
+                    <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white drop-shadow-[100px] shadow-black">{truncateString(movieDetail?.overview, 150)}</p>
 
                     {/* -----------GENRE------------- */}
                     <div className="flex md:w-full w-[80%] flex-start items-center gap-[1rem] flex-wrap mt-4">
