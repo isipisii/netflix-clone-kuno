@@ -7,11 +7,10 @@ import Director from './components/Director'
 import MovieTrailer from './components/MovieTrailer'
 import Loader from './components/Loader'
 
-const Movie = () => {
+const MoviePage = () => {
   const [loading, setLoading] = useState(false)
-  const {
-    movieDetail, fetchMovieDetails, IMG_BASE_URL, fetchCasts, casts, truncateString, 
-    fetchDirector, director, directorProfile, trailerKey, fetchMovieUrl} = useContext(ApiContext)
+  const { movieDetail, fetchMovieDetails, IMG_BASE_URL, fetchCasts, casts, truncateString, 
+  fetchDirector, director, directorProfile, trailerKey, fetchMovieUrl, addToWatchList, watchList} = useContext(ApiContext)
   const { id } = useParams()
 
   useEffect(() => {
@@ -26,8 +25,8 @@ const Movie = () => {
     fetchMovieData()
   }, [id])
 
-
-
+  console.log(watchList)
+  
   return (
   <> 
     {loading ? 
@@ -52,7 +51,14 @@ const Movie = () => {
                     <h1 className="text-[2.8rem] md:text-[4rem] font-bold text-white">{movieDetail?.title}</h1>
                     <div>
                       <button className="border text-[.9rem] md:text-[1rem] bg-red-600 py-2 px-5 md:px-8 border-red-600 text-white">Play</button>
-                      <button className="border text-[.9rem] md:text-[1rem] py-2 px-5 md:px-8 border-gray-300 text-white ml-4 hover:bg-[#ffffff2c]">Watch Later</button>
+                      <button 
+                        className="border text-[.9rem] md:text-[1rem] py-2
+                        px-5 md:px-8 border-gray-300 text-white 
+                        ml-4 hover:bg-[#ffffff2c]"
+                        onClick={() => {addToWatchList(movieDetail), console.log("clicked")}}
+                      >
+                        Watch Later
+                      </button>
                     </div>
                     <p className="text-[#ffffff9f] mt-4">Released: {movieDetail?.release_date}  •  {movieDetail?.runtime} minutes</p>
                     <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white">{truncateString(movieDetail?.overview, 150)}</p>
@@ -119,4 +125,4 @@ const Movie = () => {
   )
 }
 
-export default Movie
+export default MoviePage

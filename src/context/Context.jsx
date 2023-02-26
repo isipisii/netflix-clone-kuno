@@ -14,6 +14,11 @@ const Context = ({children}) => {
   const [director, setDirector] = useState("")
   const [directorProfile, setDirectorProfile] = useState("")
   const [movieTrailers, setMovieTrailers] = useState([]) 
+  const [watchList, setWatchList] = useState([])
+
+  function addToWatchList(movie){
+    setWatchList(prevWatchList => [...prevWatchList, movie])
+  }
 
   //for main movie/ featured movie
   async function getMovies(url) {
@@ -100,7 +105,9 @@ const Context = ({children}) => {
         fetch,
         directorProfile,
         fetchMovieUrl,
-        trailerKey
+        trailerKey,
+        addToWatchList,
+        watchList
       }}
     >
       {children}
