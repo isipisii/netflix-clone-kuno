@@ -19,6 +19,11 @@ const Context = ({children}) => {
   function addToWatchList(movie){
     setWatchList(prevWatchList => [...prevWatchList, movie])
   }
+  
+  function deleteMovie(id) {
+    const latestWatchList = watchList.filter(movie => movie?.id !== id)
+    setWatchList(latestWatchList)
+  }
 
   //for main movie/ featured movie
   async function getMovies(url) {
@@ -107,7 +112,8 @@ const Context = ({children}) => {
         fetchMovieUrl,
         trailerKey,
         addToWatchList,
-        watchList
+        watchList,
+        deleteMovie
       }}
     >
       {children}
