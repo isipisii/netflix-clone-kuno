@@ -10,7 +10,7 @@ import Loader from './components/Loader'
 const MoviePage = () => {
   const [loading, setLoading] = useState(false)
   const { movieDetail, fetchMovieDetails, IMG_BASE_URL, fetchCasts, casts, truncateString, 
-  fetchDirector, director, directorProfile, trailerKey, fetchMovieUrl, addToWatchList, watchList} = useContext(ApiContext)
+  fetchDirector, director, directorProfile, trailerKey, fetchMovieUrl, addToWatchList } = useContext(ApiContext)
   const { id } = useParams()
 
   useEffect(() => {
@@ -114,6 +114,8 @@ const MoviePage = () => {
                 />
               </div>
             </div>
+
+            {/* TODOOOOOOOOOOOOOOOOOOOOO */}
           </div>  
         <div>    
       </div>

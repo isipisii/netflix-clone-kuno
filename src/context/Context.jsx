@@ -20,6 +20,7 @@ const Context = ({children}) => {
     setWatchList(prevWatchList => [...prevWatchList, movie])
   }
   
+  //delete movie function for watchlist page
   function deleteMovie(id) {
     const latestWatchList = watchList.filter(movie => movie?.id !== id)
     setWatchList(latestWatchList)
@@ -28,58 +29,58 @@ const Context = ({children}) => {
   //for main movie/ featured movie
   async function getMovies(url) {
     try {
-      const response = await axios.get(url);
-      setMovies(response.data.results);
+      const response = await axios.get(url)
+      setMovies(response.data.results)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 
   //for getting the movie details when movie card is clicked
   async function fetchMovieDetails(id) {
     try {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${VITE_MOVIE_API_KEY}&language=en-US`);
-      setMovieDetail(response.data);
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${VITE_MOVIE_API_KEY}&language=en-US`)
+      setMovieDetail(response.data)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
   
   //for casts
   async function fetchCasts(id) {
     try {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${VITE_MOVIE_API_KEY}`);
-      setCasts(response.data.cast);
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${VITE_MOVIE_API_KEY}`)
+      setCasts(response.data.cast)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 
   //for director
   async function fetchDirector(id) {
   try {
-    const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${VITE_MOVIE_API_KEY}`);
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${VITE_MOVIE_API_KEY}`)
     const data = response.data;
-    const director = data?.crew.find(member => member?.job === 'Director');
+    const director = data?.crew.find(member => member?.job === 'Director')
     if (director) {
       setDirector(director?.name);
       setDirectorProfile(director?.profile_path);
-      console.log(`The director of the movie is ${director?.name}.`);
+      console.log(`The director of the movie is ${director?.name}.`)
     } else {
-      console.log('No director found for this movie.');
+      console.log('No director found for this movie.')
     }
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 }
   
-  //
+  //for movie url
   async function fetchMovieUrl(id) {
     try {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${VITE_MOVIE_API_KEY}`);
-      setMovieTrailers(response.data.results);
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${VITE_MOVIE_API_KEY}`)
+      setMovieTrailers(response.data.results)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 
@@ -88,7 +89,7 @@ const Context = ({children}) => {
     .filter((trailer) => trailer?.type === 'Trailer')
     .map((trailer) => trailer?.key)[0]
 
-  const truncateString = (str, num ) => {
+  function truncateString(str, num ){
     if(str?.length > num){
         return str.slice(0, num) + '...'
     } else return str
