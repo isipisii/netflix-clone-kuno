@@ -2,15 +2,14 @@ import { useParams, Link } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ApiContext } from "../context/Context"
 
-import Casts from './components/Casts'
-import Director from './components/Director'
-import MovieTrailer from './components/MovieTrailer'
-import Loader from './components/Loader'
+import Casts from './page-components/Casts'
+import Director from './page-components/Director'
+import MovieTrailer from './page-components/MovieTrailer'
+import Loader from './page-components/Loader'
 
 const MoviePage = () => {
-  const [loading, setLoading] = useState(false)
   const { movieDetail, fetchMovieDetails, IMG_BASE_URL, fetchCasts, casts, truncateString, 
-  fetchDirector, director, directorProfile, trailerKey, fetchMovieUrl, addToWatchList } = useContext(ApiContext)
+  fetchDirector, director, directorProfile, trailerKey, fetchMovieUrl, addToWatchList, loading, setLoading} = useContext(ApiContext)
   const { id } = useParams()
 
   useEffect(() => {
@@ -25,6 +24,8 @@ const MoviePage = () => {
     fetchMovieData()
   }, [id])
   
+  console.log(movieDetail)
+
   return (
   <> 
     {loading ? 

@@ -16,6 +16,7 @@ const Context = ({children}) => {
   const [movieTrailers, setMovieTrailers] = useState([]) 
   const [watchList, setWatchList] = useState([])
   const [filteredGenreMovies, setFilteredGenreMovies] = useState([])
+  const [loading, setLoading] = useState(false)
 
   function addToWatchList(movie){
     setWatchList(prevWatchList => [...prevWatchList, movie])
@@ -86,16 +87,6 @@ const Context = ({children}) => {
   }
 
   // for fetching the list of movie base on genre
-  // async function fetchFilteredGenreMovies(id){
-  //   try{
-  //     const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${VITE_MOVIE_API_KEY}&with_genres=${id}`) 
-  //     setFilteredGenreMovies(response.data.results)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-
-  // for fetching the list of movie base on genre
   async function fetchFilteredGenreMovies(id){
     try{
       const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${VITE_MOVIE_API_KEY}&with_genres=${id}`) 
@@ -111,8 +102,6 @@ const Context = ({children}) => {
     }
   }
 
-
-
   // for finding the official trailer url by filtering and mapping
   const trailerKey = movieTrailers 
     .filter((trailer) => trailer?.type === 'Trailer')
@@ -127,6 +116,8 @@ const Context = ({children}) => {
   return (
     <ApiContext.Provider
       value={{
+        setLoading,
+        loading,
         movieDetail,
         fetchMovieDetails,
         randomMovie,
@@ -145,7 +136,8 @@ const Context = ({children}) => {
         watchList,
         deleteMovie,
         fetchFilteredGenreMovies,
-        filteredGenreMovies
+        filteredGenreMovies,
+        setFilteredGenreMovies
       }}
     >
       {children}

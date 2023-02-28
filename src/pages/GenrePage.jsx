@@ -5,15 +5,19 @@ import { ApiContext } from "../context/Context"
 import MovieCard from "../components/MovieCard"
 
 const GenrePage = () => {
-    const {fetchFilteredGenreMovies, filteredGenreMovies, setFilteredGenreMovies, IMG_BASE_URL} = useContext(ApiContext)
+    const {fetchFilteredGenreMovies, filteredGenreMovies, setFilteredGenreMovies, IMG_BASE_URL, loading, setLoading} = useContext(ApiContext)
     const { id } = useParams()
 
     useEffect(() => {
         async function getMovies(){
+          setLoading(true)
           await fetchFilteredGenreMovies(id)
+          setLoading(false)
         }
         getMovies()
     }, [])
+
+    console.log(filteredGenreMovies)
 
   return (
     <div>
