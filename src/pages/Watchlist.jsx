@@ -16,8 +16,7 @@ const Watchlist = () => {
     let slider = document.getElementById('slider')
     slider.scrollLeft += 500
   }
-
-
+  
   return (
     <>
       {watchList.length !== 0 && watchList !== null ?

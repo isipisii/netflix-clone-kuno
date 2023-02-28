@@ -25,6 +25,8 @@ const MoviePage = () => {
     fetchMovieData()
   }, [id])
 
+  console.log(casts)
+  console.log(movieDetail)
   return (
   <> 
     {loading ? 
@@ -85,8 +87,9 @@ const MoviePage = () => {
           </div>
           
           {/* OTHER DETAILS */}
-          <div className="mt-10">
+          <div className="mt-10 flex">
             <div className="w-[100%] sm:w-[45%]">
+
               {/*-----------CASTS---------*/}
               <div>
                   <h2 className="text-white font-medium text-[1.5rem] mb-[1rem] mx-4 md:mx-8 border-l-[10px] pl-2 border-red-600 ">Cast</h2>
@@ -109,7 +112,7 @@ const MoviePage = () => {
               <div className="mt-4 w-full h-auto">
                 <Director
                   IMG_BASE_URL={IMG_BASE_URL}
-                  director={director}
+                  directorName={director}
                   directorProfile={directorProfile}
                 />
               </div>
