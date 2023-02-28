@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { ApiContext } from "../context/Context"
 
@@ -24,9 +24,7 @@ const MoviePage = () => {
     }
     fetchMovieData()
   }, [id])
-
-  console.log(casts)
-  console.log(movieDetail)
+  
   return (
   <> 
     {loading ? 
@@ -67,7 +65,9 @@ const MoviePage = () => {
                     <div className="flex md:w-full w-[80%] flex-start items-center gap-[1rem] flex-wrap mt-4">
                       {movieDetail?.genres.map((genre, index) => (
                         <div key={index}>
-                          <p className="text-white backdrop-blur-lg px-2 py-1 border-[1px] text-[.9rem] md:text-[1rem] border-white hover:bg-[#ffffff2c]">{genre.name}</p>
+                          <Link to={`/genre/${genre?.id}`}>
+                           <p className="text-white backdrop-blur-lg px-2 py-1 border-[1px] text-[.9rem] md:text-[1rem] border-white hover:bg-[#ffffff2c]">{genre.name}</p>
+                          </Link>
                         </div>
                       ))}
                     </div>

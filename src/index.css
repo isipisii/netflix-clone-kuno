@@ -20,8 +20,6 @@ background-color: rgba(232, 231, 231, 0.29);
 
 .casts::-webkit-scrollbar{
     display: none;
-    height: .5rem;
-    padding: 0 .1rem;
 }
 
 body{

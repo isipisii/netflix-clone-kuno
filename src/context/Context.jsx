@@ -15,6 +15,7 @@ const Context = ({children}) => {
   const [directorProfile, setDirectorProfile] = useState("")
   const [movieTrailers, setMovieTrailers] = useState([]) 
   const [watchList, setWatchList] = useState([])
+  const [filteredGenreMovies, setFilteredGenreMovies] = useState([])
 
   function addToWatchList(movie){
     setWatchList(prevWatchList => [...prevWatchList, movie])
@@ -71,8 +72,8 @@ const Context = ({children}) => {
     }
   } catch (error) {
     console.error(error)
-  }
-}
+    }
+  } 
   
   //for movie url
   async function fetchMovieUrl(id) {
@@ -83,6 +84,34 @@ const Context = ({children}) => {
       console.error(error)
     }
   }
+
+  // for fetching the list of movie base on genre
+  // async function fetchFilteredGenreMovies(id){
+  //   try{
+  //     const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${VITE_MOVIE_API_KEY}&with_genres=${id}`) 
+  //     setFilteredGenreMovies(response.data.results)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+
+  // for fetching the list of movie base on genre
+  async function fetchFilteredGenreMovies(id){
+    try{
+      const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${VITE_MOVIE_API_KEY}&with_genres=${id}`) 
+      const moviesWithLiked = response.data.results.map(movie => {
+        return {
+          ...movie,
+          liked: false
+        }
+      })
+      setFilteredGenreMovies(moviesWithLiked)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
 
   // for finding the official trailer url by filtering and mapping
   const trailerKey = movieTrailers 
@@ -114,7 +143,9 @@ const Context = ({children}) => {
         trailerKey,
         addToWatchList,
         watchList,
-        deleteMovie
+        deleteMovie,
+        fetchFilteredGenreMovies,
+        filteredGenreMovies
       }}
     >
       {children}
