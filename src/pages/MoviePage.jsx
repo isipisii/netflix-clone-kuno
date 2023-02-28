@@ -66,8 +66,8 @@ const MoviePage = () => {
                     <div className="flex md:w-full w-[80%] flex-start items-center gap-[1rem] flex-wrap mt-4">
                       {movieDetail?.genres.map((genre, index) => (
                         <div key={index}>
-                          <Link to={`/genre/${genre?.id}`}>
-                           <p className="text-white backdrop-blur-lg px-2 py-1 border-[1px] text-[.9rem] md:text-[1rem] border-white hover:bg-[#ffffff2c]">{genre.name}</p>
+                          <Link to={`/genre/${genre?.id}/${genre?.name.toLowerCase()}`}>
+                           <p className="text-white backdrop-blur-lg px-2 py-1 border-[1px] text-[.9rem] md:text-[1rem] border-white hover:bg-[#ffffff2c]">{genre?.name}</p>
                           </Link>
                         </div>
                       ))}
