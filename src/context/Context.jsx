@@ -131,12 +131,12 @@ const Context = ({children}) => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${VITE_MOVIE_API_KEY}&query=${search}`
       )
-      if (response.data && response.data.results) {
+      // if (response.data && response.data.results) {
         setSearchResults(response.data.results)
         console.log(search)
-      } else {
-        console.log("No results found.")
-      }
+      // } else {
+      //   console.log("No results found.")
+      // }
     } catch (error) {
       console.error(error)
     }
