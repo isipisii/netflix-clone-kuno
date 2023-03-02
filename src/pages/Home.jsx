@@ -23,8 +23,8 @@ const Home = () => {
         rowID="3"
       />
       <Row 
-        title="Now Playing"
-        fetchURL={requests.requestHorror}
+        title="Top Rated"
+        fetchURL={requests.requestTopRated}
         rowID="4"
       />
     </>

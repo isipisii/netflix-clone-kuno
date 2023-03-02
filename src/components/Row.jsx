@@ -21,7 +21,6 @@ const Row = ({ title, fetchURL, rowID}) => {
       })
   }, [fetchURL])
 
-
   function slideLeft(){
     let slider = document.getElementById('slider' + rowID)
     slider.scrollLeft -= 500;
@@ -51,7 +50,7 @@ const Row = ({ title, fetchURL, rowID}) => {
               liked={movie.liked}
               setMovies={setMovies}
               id={movie?.id}
-              img={movie?.poster_path}
+              img={movie?.backdrop_path}
               title={movie?.title}
               IMG_BASE_URL={IMG_BASE_URL}
               key={index}
