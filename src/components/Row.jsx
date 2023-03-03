@@ -31,6 +31,8 @@ const Row = ({ title, fetchURL, rowID}) => {
     slider.scrollLeft += 500;
   }
 
+  
+
   return (
     <>
       <h2 className="text-white text-[1.5rem] font-semibold p-4">{title}</h2>

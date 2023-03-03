@@ -1,9 +1,10 @@
 import { useContext } from 'react'
 import { ApiContext } from '../context/Context'
+import { Link } from 'react-router-dom'
 
 const Search = () => {
-    const { setSearchTerm, fetchSearchedMovies, searchTerm} = useContext(ApiContext)
-
+    const { setSearchTerm, fetchSearchedMovies, searchTerm } = useContext(ApiContext)
+    
   return (
     <form
           onSubmit={e => {
@@ -17,7 +18,11 @@ const Search = () => {
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
           />
-          <button type="submit">Search</button>
+            <button 
+              type="submit"
+            >
+              Search
+            </button>
     </form>
   )
 }

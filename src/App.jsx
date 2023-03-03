@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import MoviePage from './pages/MoviePage'
 import Watchlist from './pages/Watchlist'
 import GenrePage from './pages/GenrePage'
+import ResultPage from './pages/ResultPage'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/movie/:id' element={<MoviePage />}/>
         <Route path='/watchlist' element={<Watchlist />} />
         <Route path='/genre/:id/:genre' element={<GenrePage/>} />
+        <Route path='/result' element={<ResultPage />} />
       </Routes>
     </>
   )

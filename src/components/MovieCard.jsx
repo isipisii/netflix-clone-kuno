@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FaHeart, FaRegHeart} from 'react-icons/fa'
 
-const MovieCard = ({setMovies, liked, id, img ,title, IMG_BASE_URL, voteAvg}) => {
+const MovieCard = ({ setMovies, liked, id, img ,title, IMG_BASE_URL, voteAvg }) => {
 
   function likeHandler(id){
     setMovies(prevMovies => {

@@ -19,6 +19,7 @@ const Context = ({children}) => {
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [searchResults, setSearchResults] = useState([])
+  
   function addToWatchList(movie){
     setWatchList(prevWatchList => [...prevWatchList, movie])
   }
@@ -63,7 +64,7 @@ const Context = ({children}) => {
   async function fetchDirector(id) {
   try {
     const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${VITE_MOVIE_API_KEY}`)
-    const data = response.data;
+    const data = response.data
     const director = data?.crew.find(member => member?.job === 'Director')
     if (director) {
       setDirector(director?.name)
@@ -128,15 +129,9 @@ const Context = ({children}) => {
 // for fetching the movies from searchterm
   async function fetchSearchedMovies(search) {
     try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${VITE_MOVIE_API_KEY}&query=${search}`
-      )
-      // if (response.data && response.data.results) {
+      const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${VITE_MOVIE_API_KEY}&query=${search}`)
         setSearchResults(response.data.results)
         console.log(search)
-      // } else {
-      //   console.log("No results found.")
-      // }
     } catch (error) {
       console.error(error)
     }
@@ -173,7 +168,7 @@ const Context = ({children}) => {
         setSearchTerm,
         searchTerm,
         searchResults,
-        fetchSearchedMovies
+        fetchSearchedMovies,
       }}
     >
       {children}

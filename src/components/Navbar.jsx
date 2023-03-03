@@ -8,10 +8,13 @@ const NavBar = () => (
       </Link>
       <div className="flex items-center gap-2">
         <Search />
-        <button className='text-white'>Sign up</button>
-        <button className='bg-red-600 px-4 py-2 rounded cursor-pointer text-white'>Sign in</button>
+        {/* <button className='text-white'>Sign up</button>
+        <button className='bg-red-600 px-4 py-2 rounded cursor-pointer text-white'>Sign in</button> */}
         <Link to="/watchlist">
           <p className="text-white">Watchlist</p>
+        </Link>
+        <Link to="/result"> 
+          <p className='text-white'>Search</p>
         </Link>
       </div>
     </nav>
