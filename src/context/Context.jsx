@@ -78,7 +78,7 @@ const Context = ({children}) => {
     }
   } 
   
-  //for movie url
+  //for movie key
   async function fetchMovieUrl(id) {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${VITE_MOVIE_API_KEY}`)
