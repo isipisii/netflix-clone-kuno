@@ -1,12 +1,15 @@
 import { ApiContext } from "../context/Context"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 import MovieCard from './MovieCard'
 
-const SearchResults = () => {
-    const { searchResults, IMG_BASE_URL } = useContext(ApiContext)
-    console.log(searchResults)
+const SearchResults = ({ searchTerm }) => {
+    const { searchResults, IMG_BASE_URL, fetchSearchedMovies } = useContext(ApiContext)
     
+    useEffect(() => {
+      fetchSearchedMovies(searchTerm)
+    }, [searchTerm])
+
   return (  
     <div>
         {searchResults.map((movie, index) => (

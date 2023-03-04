@@ -17,7 +17,7 @@ const App = () => {
         <Route path='/movie/:id' element={<MoviePage />}/>
         <Route path='/watchlist' element={<Watchlist />} />
         <Route path='/genre/:id/:genre' element={<GenrePage/>} />
-        <Route path='/result' element={<ResultPage />} />
+        <Route path='/result/:search_term' element={<ResultPage />} />
       </Routes>
     </>
   )
