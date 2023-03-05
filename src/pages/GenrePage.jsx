@@ -18,7 +18,7 @@ const GenrePage = () => {
     }, [])
 
     console.log(filteredGenreMovies)
-
+    
   return (
     <div>
       <div className="pt-[6rem] mx-auto max-w-[1400px] md:px-4">

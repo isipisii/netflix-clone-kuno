@@ -17,12 +17,12 @@ const Main = () => {
     <div className="w-full h-[100vh] ">
       <div className="w-full h-full">
         {/*-----------BACK DROP---------*/}
-        <div className="absolute w-full h-full bg-gradient-to-r from-black"></div>
+        <div id="featured-movie"></div>
         <img className="w-full h-full object-cover" 
           src={`${IMG_BASE_URL}${randomMovie?.backdrop_path}`} 
           alt={randomMovie?.title} 
         />
-        <div className="absolute inset-x-0 bottom-0 h-[7rem] bg-gradient-to-t from-[#000] via-[#000000c2] to-transparent"></div>
+        <div className=" absolute inset-x-0 bottom-0 h-[3rem] bg-gradient-to-t from-[#000] via-[#000000c2] to-transparent"></div>
 
         {/*--------MOVIE DETAILS---------*/}
         <div className="w-full h-full absolute inset-0 flex items-center justify-center">
@@ -38,9 +38,11 @@ const Main = () => {
               > 
                 Watch Later
               </button>
-            </div> 
-            <p className="text-[#ffffff76] mt-4 ">Released: {randomMovie?.release_date}</p>
-            <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white drop-shadow-[100px] shadow-black">{truncateString(randomMovie?.overview, 150)}</p>
+            </div>
+            <div className="w-[70%] md:w-[60%]">
+              <p className="text-[#ffffff76] mt-4 ">Released: {randomMovie?.release_date}</p>
+              <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white drop-shadow-[100px] shadow-black">{truncateString(randomMovie?.overview, 150)}</p>
+            </div>
             <Link to={`/movie/${randomMovie?.id}`}>
                 <p className="text-white backdrop-blur-lg flex hover:bg-[#ffffff2c] items-center justify-center text-[.9rem] py-2 px-3 md:text-[1rem] w-[150px] border-[1px] mt-[1rem] border-white">More Details <MdArrowRight className="text-white" size={25}/></p>
             </Link>

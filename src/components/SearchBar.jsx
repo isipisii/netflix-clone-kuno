@@ -13,7 +13,7 @@ const SearchBar = () => {
           setSearchTerm("")
           navigate(`/result/${searchTerm}`)
      }}
-     className="border border-white w-[60%]"
+     className="border border-white w-[60%] flex"
     >
       <input
           type="text"
