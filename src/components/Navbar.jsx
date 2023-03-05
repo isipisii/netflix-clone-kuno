@@ -16,7 +16,7 @@ const NavBar = () => {
       }
     }
     handleOnScroll()
-    window.addEventListener('scroll', handleOnScroll);
+    window.addEventListener('scroll', handleOnScroll) 
 
     return () => {
       window.removeEventListener('scroll', handleOnScroll)
@@ -26,7 +26,7 @@ const NavBar = () => {
   return (
     <nav className={`flex items-center justify-between py-4 px-4 md:px-8 z-10 w-full transition-all duration-500 ease-in-out fixed ${isActive ? "bg-[#141414]" : "bg-transparent"}`}>
       <div className="flex items-center gap-12">
-        <Link to="/">
+        <Link to="/">  
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="logo" className="w-[100px]"/>
           </Link>
         <div className='hidden md:block'>
@@ -34,7 +34,7 @@ const NavBar = () => {
             <Link to="/" className={`${locationActive('/') ? 'text-white font-bold' : 'text-[#ffffffad]'} text-[.9rem]`}>
               <p>Home</p>
             </Link>
-            <Link className='text-[#ffffffad] text-[.9rem]'>
+            <Link to="/shows" className={`${locationActive('/shows') ? 'text-white font-bold' : 'text-[#ffffffad]'} text-[.9rem]`}>
               <p>TV Shows</p>
             </Link>
             <Link className='text-[#ffffffad] text-[.9rem]'>

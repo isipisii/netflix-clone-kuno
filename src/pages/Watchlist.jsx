@@ -10,9 +10,9 @@ const Watchlist = () => {
   return (
     <>
       {watchList.length !== 0 && watchList !== null ?
-      <div className="py-[6rem]">
-        <div>
-          <h2 className="text-white font-medium text-[2rem] mb-[1rem] mx-4 md:mx-8  border-l-[10px] pl-2 border-red-600 ">Watchlist</h2>
+      <div className="py-[6rem] ">
+        <div className="py-4 px-4 md:px-8">
+          <h2 className="text-white font-medium text-[2rem] mb-[1rem]  border-l-[10px] pl-2 border-red-600 ">Watchlist</h2>
           <div className="relative flex items-center group">
             <MdChevronLeft
               onClick={() => slideLeft('slider')}
@@ -48,10 +48,10 @@ const Watchlist = () => {
         </div>
       </div>
         :
-        <div className="w-full h-full px-[1rem] pt-[6rem] ">
+        <div className="w-full h-full py-4 px-4 md:px-8 pt-[6rem] ">
           <h2 className="text-white font-medium text-[2rem] mb-[1rem]  border-l-[10px] pl-2 border-red-600 ">Watchlist</h2>
           <div className="w-full h-[60vh] flex items-center justify-center">
-            <h3 className="text-[#ffffff8b] text-center">There's no movie yet.</h3>
+            <h3 className="text-[#ffffff8b] text-center sm:[.9rem]">There's no movie yet.</h3>
           </div>
         </div>
       }

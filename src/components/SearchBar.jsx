@@ -13,7 +13,7 @@ const SearchBar = () => {
           setSearchTerm("")
           navigate(`/result/${searchTerm}`)
      }}
-     className="border border-white flex"
+     className="flex w-[300px]"
     >
       <input
           type="text"
@@ -22,7 +22,7 @@ const SearchBar = () => {
           onChange={e => setSearchTerm(e.target.value)}
           className="bg-black p-[.5rem] w-[100%] text-white"
       />
-      <button onClick={() => navigate(`/result/${searchTerm}`)}>Search</button>
+      <button className='text-white' onClick={() => navigate(`/result/${searchTerm}`)}>Search</button>
     </form>
   )
 }
