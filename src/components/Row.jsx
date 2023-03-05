@@ -34,8 +34,8 @@ const Row = ({ title, fetchURL, rowID}) => {
   
 
   return (
-    <>
-      <h2 className="text-white text-[1.5rem] font-semibold p-4">{title}</h2>
+    <div className='py-2 px-4 md:px-8'>
+      <h2 className="text-white text-[1.5rem] font-semibold pb-2">{title}</h2>
       <div className="relative flex items-center group">
         <MdChevronLeft
           onClick={slideLeft}
@@ -67,7 +67,7 @@ const Row = ({ title, fetchURL, rowID}) => {
           size={40}
         />
       </div>
-    </>
+    </div>
   )
 }
 

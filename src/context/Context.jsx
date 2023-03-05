@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const ApiContext = createContext()
 
-const Context = ({children}) => {
+const Context = ({ children }) => {
   const { VITE_MOVIE_API_KEY } = import.meta.env
   const [movies, setMovies] = useState([])
   const randomMovie = movies[Math.floor(Math.random() * movies.length)]

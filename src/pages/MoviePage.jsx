@@ -9,7 +9,7 @@ import Loader from './page-components/Loader'
 
 const MoviePage = () => {
   const { movieDetail, fetchMovieDetails, IMG_BASE_URL, fetchCasts, casts, truncateString, 
-  fetchDirector, director, directorProfile, trailerKey, fetchMovieUrl, addToWatchList, loading, setLoading, movieTrailers} = useContext(ApiContext)
+  fetchDirector, director, directorProfile, trailerKey, fetchMovieUrl, addToWatchList, loading, setLoading, } = useContext(ApiContext)
   const { id } = useParams()
 
   useEffect(() => {
@@ -24,8 +24,6 @@ const MoviePage = () => {
     fetchMovieData()
   }, [id])
   
-  // console.log(movieTrailers)
-  // console.log(trailerKey)
 
   return (
   <> 
