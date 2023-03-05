@@ -22,7 +22,7 @@ const Main = () => {
           src={`${IMG_BASE_URL}${randomMovie?.backdrop_path}`} 
           alt={randomMovie?.title} 
         />
-        <div className=" absolute inset-x-0 bottom-0 h-[3rem] bg-gradient-to-t from-[#141414] via-[#141414a1] to-transparent"></div>
+        <div className=" absolute inset-x-0 bottom-0 h-[10rem] bg-gradient-to-t from-[#141414] via-[#141414a1] to-transparent"></div>
 
         {/*--------MOVIE DETAILS---------*/}
         <div className="w-full h-full absolute inset-0 flex items-center justify-center">

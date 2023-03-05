@@ -37,12 +37,12 @@ const MoviePage = () => {
             <div className="w-full sm:h-[100vh] h-[100vh]">
                 <div className="w-full h-full relative">
                   {/*-----------BACK DROP---------*/}
-                  <div className="absolute w-full h-full bg-gradient-to-r from-black"></div>
+                  <div className="absolute w-full h-full bg-gradient-to-r from-[#141414]"></div>
                   <img className="w-full h-full object-cover" 
                     src={`${IMG_BASE_URL}${movieDetail?.backdrop_path}`} 
                     alt={movieDetail?.title} 
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-[7rem] bg-gradient-to-t from-[#000] via-[#000000c2] to-transparent"></div>
+                  <div className=" absolute inset-x-0 bottom-0 h-[10rem] bg-gradient-to-t from-[#141414] via-[#141414a1] to-transparent"></div>
 
                   {/*--------MOVIE DETAILS---------*/}
                   <div className="w-full h-full absolute inset-0 flex items-center justify-center">
