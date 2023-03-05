@@ -22,15 +22,22 @@ const NavBar = () => {
   }, [])
 
   return (
-    <nav className={`flex items-center justify-between p-4 z-10 w-full transition-all duration-500 ease-in-out  fixed ${isActive ? "bg-black " : "bg-transparent"}`}>
-      <Link to="/">
-        <h1 className="text-red-600 font-bold cursor-pointer text-[2rem]">Netflix</h1>
-      </Link>
+    <nav className={`flex items-center justify-between py-4 px-4 md:px-8 z-10 w-full transition-all duration-500 ease-in-out fixed ${isActive ? "bg-[#141414]" : "bg-transparent"}`}>
+      <div className="flex items-center gap-8">
+        <Link to="/">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="logo" className="w-[80px]"/>
+          </Link>
+        <div className='flex items-center gap-[1rem]'>
+          <Link to="/">
+            <p className="text-white">Home</p>
+          </Link>
+          <Link to="/watchlist">
+            <p className="text-white">Watchlist</p>
+          </Link>
+        </div>
+      </div>
       <div className="flex items-center gap-2">
         <SearchBar />
-        <Link to="/watchlist">
-          <p className="text-white">Watchlist</p>
-        </Link>
       </div>
     </nav>
   )}
