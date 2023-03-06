@@ -30,7 +30,7 @@ const TvShowsRow = ({ title, fetchURL, rowID }) => {
             id={'slider' + rowID}  
             className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
           > 
-          {/* TODOOOO */}
+          {/* TODOOOO */}               
             {fetchURL}
           </div>
 

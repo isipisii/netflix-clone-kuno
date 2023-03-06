@@ -57,15 +57,15 @@ const NavBar = () => {
       </div>
 
       {clicked ? 
-        <FontAwesomeIcon icon={faXmark} className="sm:hidden text-white text-[1.7rem] z-10" onClick={() => setClicked(false)}/>
+        <FontAwesomeIcon icon={faXmark} className="sm:hidden text-white text-[1.7rem] p-2  z-10" onClick={() => setClicked(false)}/>
           :
-        <FontAwesomeIcon icon={faBars} className="sm:hidden text-white text-[1.7rem] z-10" onClick={() => setClicked(true)}/>
+        <FontAwesomeIcon icon={faBars} className="sm:hidden text-white text-[1.7rem] bg-[#000000a2] p-2 rounded-[100px] z-10" onClick={() => setClicked(true)}/>
       }
 
       {/* TODOOOO */}
       {/* for mobile screen links */}
       {clicked &&
-        <div className="absolute flex items-center justify-center bg-[#141414] top-0 right-0 h-[100vh] w-[200px] px-[3rem]">
+        <div className="absolute flex items-center justify-center shadow-xl shadow-[#7c7b7b36] bg-[#141414] top-0 right-0 h-[100vh] w-[200px] px-[3rem]">
           <div className='flex flex-col items-start gap-[2rem]'>
             <Link to="/" className={`${locationActive('/') ? 'text-white font-bold' : 'text-[#ffffffad]'} text-[.9rem]`}>
               <p>Home</p>
