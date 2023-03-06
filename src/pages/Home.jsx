@@ -1,10 +1,6 @@
-import requests from '../Requests'
+import { requests } from '../Requests'
 import Main from '../components/Main'
 import Row from '../components/Row'
-import SearchResults from '../components/SearchResults'
-
-import { ApiContext } from '../context/Context'
-import { useContext } from 'react'
 
 const Home = () => {
   return (

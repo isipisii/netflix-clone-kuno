@@ -19,7 +19,8 @@ const Context = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [searchResults, setSearchResults] = useState([])
-  
+  const [tvShows, setTvShows] = useState([])
+
   function addToWatchList(movie){
     setWatchList(prevWatchList => [...prevWatchList, movie])
   }
@@ -130,8 +131,17 @@ const Context = ({ children }) => {
   async function fetchSearchedMovies(search) {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${VITE_MOVIE_API_KEY}&query=${search}`)
-        setSearchResults(response.data.results)
-        console.log(search)
+      setSearchResults(response.data.results)
+      console.log(search)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function getTvShows(url){
+    try {
+      const response = await axios.get(url)
+      setTvShows(response.data.results)
     } catch (error) {
       console.error(error)
     }
@@ -169,6 +179,9 @@ const Context = ({ children }) => {
         searchTerm,
         searchResults,
         fetchSearchedMovies,
+
+        getTvShows,
+        tvShows,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import {  useContext, useEffect } from "react"
 import { ApiContext } from "../context/Context"
 import { MdArrowRight } from "react-icons/md"
 import { Link } from "react-router-dom"
-import requests from "../Requests"
+import { requests } from "../Requests"
 
 
 const Main = () => {
@@ -11,7 +11,6 @@ const Main = () => {
   useEffect(() => {
     getMovies(requests.requestPopular)
   },[])
-  
 
   return (
     <>
