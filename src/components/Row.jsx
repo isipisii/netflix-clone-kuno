@@ -24,7 +24,7 @@ const Row = ({ title, fetchURL, rowID}) => {
 
         setMovies(moviesWithLiked)
       } catch (error) {
-        console.error(error)
+        console.log(error)
       }
     }
     getMovies()
