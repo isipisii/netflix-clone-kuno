@@ -14,7 +14,7 @@ const Main = () => {
   
 
   return (
-    <div className="w-full">
+    <>
       <div className="w-full h-[100vh]">
         {/*-----------BACK DROP---------*/}
         <div  className="absolute w-full h-full bg-gradient-to-r from-[#141414]"></div>
@@ -50,7 +50,7 @@ const Main = () => {
         </div>
         
       </div>
-    </div>
+    </>
 
   )
 }
