@@ -29,13 +29,13 @@ const NavBar = () => {
   }, [])
 
   return (
-    <nav className={`flex items-center justify-between py-4 px-4 md:px-8 w-full transition-all duration-500 ease-in-out fixed z-20 ${isActive ? "bg-[#141414]" : "bg-transparent"}`}>
+    <nav className={`flex gap-8 items-center justify-between py-4 px-4 md:px-8 w-full transition-all duration-500 ease-in-out fixed z-20 ${isActive ? "bg-[#141414]" : "bg-transparent"}`}>
       <div className="flex items-center gap-12">
         <Link to="/">  
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="logo" className="w-[100px]"/>
         </Link>
         {/* for large screen links */}
-        <div className='hidden md:block'>
+        <div className='hidden sm:block'>
           <div className='flex items-center gap-[1rem] '>
             <Link to="/" className={`${locationActive('/') ? 'text-white font-bold' : 'text-[#ffffffad]'} text-[.9rem]`}>
               <p>Home</p>
@@ -53,7 +53,7 @@ const NavBar = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <SearchBar />
       </div>
 

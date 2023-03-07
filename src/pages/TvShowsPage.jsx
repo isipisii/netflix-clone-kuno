@@ -4,7 +4,7 @@ import TvShowsRow from "./page-components/TvShowsRow"
 const TvShowsPage = () => {
 
   return (
-    <>
+    <div className="pt-[6rem]">
       <TvShowsRow
          title="Top Rated"
          fetchURL={tvShowsRequests.requestTopRated}
@@ -25,7 +25,7 @@ const TvShowsPage = () => {
          fetchURL={tvShowsRequests.requestOnTheAir}
          rowID="14"
        />
-    </>
+    </div>
   )
 }
 
