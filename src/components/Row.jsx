@@ -65,7 +65,7 @@ const Row = ({ title, fetchURL, rowID}) => {
           icon={faChevronRight}
           onClick={() => slideRight(`slider${rowID}`)}
         />
-         <div className="absolute h-full w-[4rem] right-0 bg-gradient-to-l from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
+        <div className="absolute h-full w-[4rem] right-0 bg-gradient-to-l from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
       </div>
     </div>
   )

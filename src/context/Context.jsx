@@ -19,7 +19,6 @@ const Context = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [searchResults, setSearchResults] = useState([])
-  const [tvShows, setTvShows] = useState([])
 
   function addToWatchList(movie){
     setWatchList(prevWatchList => [...prevWatchList, movie])
@@ -138,15 +137,6 @@ const Context = ({ children }) => {
     }
   }
 
-  async function getTvShows(url){
-    try {
-      const response = await axios.get(url)
-      setTvShows(response.data.results)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   return (
     <ApiContext.Provider
       value={{
@@ -179,9 +169,6 @@ const Context = ({ children }) => {
         searchTerm,
         searchResults,
         fetchSearchedMovies,
-
-        getTvShows,
-        tvShows,
       }}
     >
       {children}

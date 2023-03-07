@@ -8,22 +8,22 @@ const TvShowsPage = () => {
       <TvShowsRow
          title="Top Rated"
          fetchURL={tvShowsRequests.requestTopRated}
-         rowID="1"
+         rowID="11"
        />
       <TvShowsRow
          title="Popular"
          fetchURL={tvShowsRequests.requestPopular}
-         rowID="2"
+         rowID="12"
        />
       <TvShowsRow
          title="Airing"
          fetchURL={tvShowsRequests.requestAiring}
-         rowID="3"
+         rowID="13"
        />
       <TvShowsRow
          title="On the Air"
          fetchURL={tvShowsRequests.requestOnTheAir}
-         rowID="4"
+         rowID="14"
        />
     </>
   )
