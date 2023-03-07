@@ -1,7 +1,8 @@
 import { ApiContext } from "../context/Context"
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight, faChevronLeft} from '@fortawesome/free-solid-svg-icons'
 
 const Watchlist = () => {
   const { watchList, deleteMovie, slideLeft, slideRight } = useContext(ApiContext)
@@ -10,14 +11,15 @@ const Watchlist = () => {
   return (
     <>
       {watchList.length !== 0 && watchList !== null ?
-      <div className="py-[6rem] ">
+      <div className="pt-[6rem] ">
         <div className="py-4 px-4 md:px-8">
-          <h2 className="text-white font-medium text-[2rem] mb-[1rem]  border-l-[10px] pl-2 border-red-600 ">My List</h2>
-          <div className="relative flex items-center group">
-            <MdChevronLeft
-              onClick={() => slideLeft('slider')}
-              className='bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block'
-              size={40}
+          <h2 className="text-white font-medium text-[2rem] mb-[1rem] border-l-[10px] pl-2 border-red-600 ">My List</h2>
+          <div className="relative h-full flex items-center group">
+            <div className="absolute inset-x-0 h-full w-[4rem] left-0 bg-gradient-to-r from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
+            <FontAwesomeIcon 
+              className='left-0 absolute text-[2.5rem]  text-[#ffffff5b] hover:text-[white] cursor-pointer z-10 hidden group-hover:block'
+              icon={faChevronLeft}
+              onClick={() => slideLeft("slider")}
             />
 
               {/* MOVIE CARD */}
@@ -26,7 +28,7 @@ const Watchlist = () => {
                 className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
               >  
                 {watchList.map((movie, index) => (
-                  <div className=" w-[250px] sm:w-[270px] inline-block cursor-pointer relative mr-4" key={index}>
+                  <div className=" w-[250px] sm:w-[270px] overflow-y-hidden inline-block cursor-pointer relative mr-4" key={index}>
                     <div className="absolute w-full h-full bg-gradient-to-l from-[#000000b1]"/>
                       <p className="text-white absolute top-1 right-1 text-[1.1rem] font-bold">{movie?.vote_average}</p>
                       <img className="w-full h-full block" src={`${IMG_BASE_URL}${movie?.poster_path}`} alt={movie?.title} />
@@ -39,11 +41,12 @@ const Watchlist = () => {
                   </div>))}
               </div>
 
-            <MdChevronRight
-              onClick={() => slideRight('slider')}
-              className='bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block'
-              size={40}
-            />
+              <FontAwesomeIcon 
+                className='right-0 absolute text-[2.5rem] text-[#ffffff5b] hover:text-[white] cursor-pointer z-10 hidden group-hover:block'
+                icon={faChevronRight}
+                onClick={() => slideRight("slider")}
+              />
+              <div className="absolute h-full w-[4rem] right-0 bg-gradient-to-l from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
           </div>
         </div>
       </div>

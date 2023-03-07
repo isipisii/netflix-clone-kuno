@@ -31,7 +31,6 @@ const TvShowsRow = ({ title, fetchURL, rowID }) => {
             className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
           > 
           {/* TODOOOO */}               
-            {fetchURL}
           </div>
 
           <MdChevronRight
