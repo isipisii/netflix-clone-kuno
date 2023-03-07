@@ -31,7 +31,7 @@ const TvShowsRow = ({ title, fetchURL, rowID }) => {
       <div className='py-2 px-4 md:px-8'>
         <h2 className="text-white text-[1.5rem] font-semibold pb-2">{title}</h2>
         <div className="relative flex items-center group">
-          <div className="absolute inset-x-0 h-full w-[4rem] left-0 bg-gradient-to-r from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
+          <div className="absolute inset-x-0 h-full w-[2rem] left-0 bg-gradient-to-r from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
           <FontAwesomeIcon 
             className='left-0 absolute text-[2.5rem]  text-[#ffffff5b] hover:text-[white] cursor-pointer z-10 hidden group-hover:block'
             icon={faChevronLeft}
@@ -62,7 +62,7 @@ const TvShowsRow = ({ title, fetchURL, rowID }) => {
             icon={faChevronRight}
             onClick={() => slideRight(`slider${rowID}`)}
           />
-          <div className="absolute h-full w-[4rem] right-0 bg-gradient-to-l from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
+          <div className="absolute h-full w-[2rem] right-0 bg-gradient-to-l from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
         </div>
       </div>
     )

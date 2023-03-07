@@ -14,7 +14,7 @@ const Main = () => {
 
   return (
     <>
-      <div className="w-full h-[100vh]">
+      <div className="w-full h-[100vh] relative">
         {/*-----------BACK DROP---------*/}
         <div  className="absolute w-full h-full bg-gradient-to-r from-[#141414]"></div>
         <img className="w-full h-full object-cover" 
