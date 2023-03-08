@@ -6,7 +6,8 @@ import { requests } from "../Requests"
 
 
 const Main = () => {
-  const { randomMovie, getMovies, truncateString, IMG_BASE_URL, addToWatchList } = useContext(ApiContext)
+  const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList} = useContext(ApiContext)
+  const randomMovie = movies[Math.floor(Math.random() * movies.length)]
 
   useEffect(() => {
     getMovies(requests.requestPopular)
@@ -43,7 +44,7 @@ const Main = () => {
               <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white drop-shadow-[100px] shadow-black">{truncateString(randomMovie?.overview, 150)}</p>
             </div>
             <Link to={`/movie/${randomMovie?.id}`}>
-                <p className="text-white backdrop-blur-lg flex hover:bg-[#ffffff2c] items-center justify-center text-[.9rem] py-2 px-3 md:text-[1rem] w-[150px] border-[1px] mt-[1rem] border-white">More Details <MdArrowRight className="text-white" size={25}/></p>
+                <p className="text-white backdrop-blur-lg flex hover:bg-[#ffffff2c] items-center justify-center text-[.9rem] py-[.4rem] sm:py-2 px-3 md:text-[1rem] sm:w-[150px] w-[140px] border-[1px] mt-[1rem] border-white">More Details <MdArrowRight className="text-white" size={25}/></p>
             </Link>
           </div>  
         </div>

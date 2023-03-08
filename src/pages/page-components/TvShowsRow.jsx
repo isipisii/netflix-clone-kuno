@@ -25,7 +25,6 @@ const TvShowsRow = ({ title, fetchURL, rowID }) => {
     getTvShows()
   }, [fetchURL])
 
-  console.log(tvShows)
 
     return (
       <div className='py-2 px-4 md:px-8'>
