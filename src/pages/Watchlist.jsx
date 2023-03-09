@@ -5,12 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft, } from "@fortawesome/free-solid-svg-icons";
 
 const Watchlist = () => {
-  const { watchList, deleteMovie, slideLeft, slideRight } = useContext(ApiContext);
-  const IMG_BASE_URL = "https://image.tmdb.org/t/p/original";
+  const { watchList, deleteMovie, slideLeft, slideRight, IMG_BASE_URL} = useContext(ApiContext);
  
   return (
     <>
-      {watchList.length !== 0 && watchList !== null ? (
+      {watchList.length !== 0 || watchList !== null ? (
         <div className="pt-[6rem] ">
           <div className="py-4 px-4 md:px-8">
             <h2 className="text-white font-medium text-[2rem] mb-[1rem] border-l-[10px] pl-2 border-red-600 ">

@@ -17,7 +17,8 @@ const Context = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [tvShow, setTvShow] = useState();
+  const [tvShowDetail, setTvShowDetail] = useState();
+  const [tvShows, setTvShows] = useState([])
 
   function addToWatchList(movie) {
     setWatchList((prevWatchList) => [...prevWatchList, movie]);
@@ -147,15 +148,25 @@ const Context = ({ children }) => {
     }
   }
 
-  //for
+  // tv show detailss for tv show page
   async function fetchTvShowDetails(id) {
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/tv/${id}?api_key=${VITE_MOVIE_API_KEY}&language=en-US`
       );
-      setTvShow(response.data);
+      setTvShowDetail(response.data);
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  //
+  async function fetchTvShows(url) {
+    try {
+      const response = await axios.get(url);
+      setTvShows(response.data.results)
+    } catch (error) {
+      console.error(error)
     }
   }
 
@@ -193,7 +204,10 @@ const Context = ({ children }) => {
         fetchSearchedMovies,
 
         fetchTvShowDetails,
-        tvShow,
+        tvShowDetail,
+
+        fetchTvShows, 
+        tvShows
       }}
     >
       {children}

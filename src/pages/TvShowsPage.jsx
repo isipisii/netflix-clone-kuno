@@ -1,30 +1,34 @@
 import { tvShowsRequests } from "../Requests";
+import { nanoid } from "nanoid";
+
 import TvShowsRow from "./page-components/TvShowsRow";
+import MainTvShow from "../components/MainTvShow";
 
 const TvShowsPage = () => {
   return (
-    <div className="pt-[6rem]">
+    <>
+      <MainTvShow />
       <TvShowsRow
         title="Top Rated"
         fetchURL={tvShowsRequests.requestTopRated}
-        rowID="11"
+        rowID={nanoid()}
       />
       <TvShowsRow
         title="Popular"
         fetchURL={tvShowsRequests.requestPopular}
-        rowID="12"
+        rowID={nanoid()}
       />
       <TvShowsRow
         title="Airing"
         fetchURL={tvShowsRequests.requestAiring}
-        rowID="13"
+        rowID={nanoid()}
       />
       <TvShowsRow
         title="On the Air"
         fetchURL={tvShowsRequests.requestOnTheAir}
-        rowID="14"
+        rowID={nanoid()}
       />
-    </div>
+    </>
   );
 };
 

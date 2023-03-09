@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import { ApiContext } from "../context/Context";
 
 const ShowPage = () => {
-  const { tvShow, fetchTvShowDetails, IMG_BASE_URL, truncateString, addToWatchList, } = useContext(ApiContext);
+  const { tvShowDetail, fetchTvShowDetails, IMG_BASE_URL, truncateString, addToWatchList, } = useContext(ApiContext);
 
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -27,8 +27,8 @@ const ShowPage = () => {
           <div className="absolute w-full h-full bg-gradient-to-r from-[#141414]"></div>
           <img
             className="w-full h-full object-cover"
-            src={`${IMG_BASE_URL}${tvShow?.backdrop_path}`}
-            alt={tvShow?.name}
+            src={`${IMG_BASE_URL}${tvShowDetail?.backdrop_path}`}
+            alt={tvShowDetail?.name}
           />
           <div className=" absolute inset-x-0 bottom-0 h-[10rem] bg-gradient-to-t from-[#141414] via-[#141414a1] to-transparent"></div>
 
@@ -36,7 +36,7 @@ const ShowPage = () => {
           <div className="w-full h-full absolute inset-0 flex items-center justify-center">
             <div className="w-full  p-4 md:p-8">
               <h1 className="text-[2rem] md:text-[2.9rem] font-bold text-white drop-shadow-[100px] shadow-black">
-                {tvShow?.name}
+                {tvShowDetail?.name}
               </h1>
               <div>
                 <button className="border text-[.9rem] md:text-[1rem] bg-red-600 py-2 px-5 md:px-8 border-red-600 text-white">
@@ -47,7 +47,7 @@ const ShowPage = () => {
                     px-5 md:px-8 border-gray-300 text-white 
                     ml-4 hover:bg-[#ffffff2c] backdrop-blur-lg"
                   onClick={() => {
-                    addToWatchList(tvShow), console.log("clicked");
+                    addToWatchList(tvShowDetail), console.log("clicked");
                   }}
                 >
                   Watch Later
@@ -55,16 +55,16 @@ const ShowPage = () => {
               </div>
               <div className="w-[70%] md:w-[60%]">
                 <p className="text-[#ffffff9f] text-[.8rem] sm:text-[1rem] mt-4">
-                  Aired since: {tvShow?.first_air_date} •{" "}
+                  Aired since: {tvShowDetail?.first_air_date} •{" "}
                   {tvShow?.episode_run_time} minutes
                 </p>
                 <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white drop-shadow-[100px] shadow-black">
-                  {truncateString(tvShow?.overview, 150)}
+                  {truncateString(tvShowDetail?.overview, 150)}
                 </p>
               </div>
               {/* -----------GENRE------------- */}
               <div className="flex md:w-full w-[80%] flex-start items-center gap-[1rem] flex-wrap mt-4">
-                {tvShow?.genres.map((genre, index) => (
+                {tvShowDetail?.genres.map((genre, index) => (
                   <div key={index}>
                     <Link
                       to={`/genre/${genre?.id}/${genre?.name.toLowerCase()}`}
@@ -80,6 +80,8 @@ const ShowPage = () => {
           </div>
         </div>
       </div>
+
+      {/* TODOOOOO */}
     </div>
   );
 };
