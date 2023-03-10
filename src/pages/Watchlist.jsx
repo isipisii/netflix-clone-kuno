@@ -6,7 +6,8 @@ import { faChevronRight, faChevronLeft, } from "@fortawesome/free-solid-svg-icon
 
 const Watchlist = () => {
   const { watchList, deleteMovie, slideLeft, slideRight, IMG_BASE_URL} = useContext(ApiContext);
- 
+  console.log(watchList);
+  
   return (
     <>
       {watchList.length !== 0  ? (

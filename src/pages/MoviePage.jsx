@@ -20,7 +20,7 @@ const MoviePage = () => {
     directorProfile,
     trailerKey,
     fetchMovieUrl,
-    addToWatchList,
+    addToWatchList
   } = useContext(ApiContext);
 
   const [loading, setLoading] = useState(false);

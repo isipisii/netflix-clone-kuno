@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { requests } from "../Requests";
 
 const Main = () => {
-  const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList } =
+  const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList} =
     useContext(ApiContext);
   // const randomMovie = movies[Math.floor(Math.random() * movies.length)];
   const [randomMovie, setRandomMovie] = useState();
@@ -62,7 +62,7 @@ const Main = () => {
                 className="border text-[.9rem] md:text-[1rem] py-2 
                 px-5 md:px-8 border-gray-300 text-white ml-4 
                 hover:bg-[#ffffff2c] backdrop-blur-lg"
-                onClick={() => addToWatchList(randomMovie)}
+                onClick={() =>  addToWatchList(randomMovie)}
               >
                 Watch Later
               </button>

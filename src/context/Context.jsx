@@ -18,12 +18,41 @@ const Context = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [tvShowDetail, setTvShowDetail] = useState();
-  const [tvShows, setTvShows] = useState([])
+  const [tvShows, setTvShows] = useState([]);
+
+  // const trailerKey = movieTrailers
+  // .filter((trailer) => trailer?.type === "Trailer")
+  // .map((trailer) => trailer?.key)[0];
 
   function addToWatchList(movie) {
-    setWatchList((prevWatchList) => [...prevWatchList, movie]);
+    if (watchList.length === 0) {
+      setWatchList((prevWatchList) => [...prevWatchList, movie]);
+    } else {
+      // check if the movie already exists in the watchList
+      const movieExists = watchList.some(item => item?.id === movie?.id);
+      if (movieExists) {
+        alert("You've already added this movie to the watchlist");
+      } else {
+        setWatchList((prevWatchList) => [...prevWatchList, movie]);
+      }
+    }
   }
 
+  // 
+  // function checkIfShowOrMovieExisted(movie) {
+  //   if (watchList.length === 0) {
+  //     addToWatchList(movie);
+  //   } else {
+  //     // check if the movie already exists in the watchList
+  //     const movieExists = watchList.some(item => item?.id === movie?.id);
+  //     if (movieExists) {
+  //       alert("You've already added this movie to the watchlist");
+  //     } else {
+  //       addToWatchList(movie);
+  //     }
+  //   }
+  // }
+  
   //delete movie function for watchlist page
   function deleteMovie(id) {
     const latestWatchList = watchList.filter((movie) => movie?.id !== id);
@@ -64,7 +93,7 @@ const Context = ({ children }) => {
     }
   }
 
-  //for director
+  //for fetching the movie's director
   async function fetchDirector(id) {
     try {
       const response = await axios.get(
@@ -113,6 +142,7 @@ const Context = ({ children }) => {
       console.error(error);
     }
   }
+
   // for finding the official trailer url by filtering and mapping
   const trailerKey = movieTrailers
     .filter((trailer) => trailer?.type === "Trailer")
@@ -160,13 +190,13 @@ const Context = ({ children }) => {
     }
   }
 
-  //
+  //for fetching tv shows
   async function fetchTvShows(url) {
     try {
       const response = await axios.get(url);
-      setTvShows(response.data.results)
+      setTvShows(response.data.results);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   }
 
@@ -191,9 +221,11 @@ const Context = ({ children }) => {
         directorProfile,
         fetchMovieUrl,
         trailerKey,
+
         addToWatchList,
         watchList,
         deleteMovie,
+
         fetchFilteredGenreMovies,
         filteredGenreMovies,
         setFilteredGenreMovies,
@@ -206,8 +238,8 @@ const Context = ({ children }) => {
         fetchTvShowDetails,
         tvShowDetail,
 
-        fetchTvShows, 
-        tvShows
+        fetchTvShows,
+        tvShows,
       }}
     >
       {children}
