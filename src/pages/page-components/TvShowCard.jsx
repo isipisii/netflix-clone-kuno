@@ -19,7 +19,7 @@ const MovieCard = ({ setTvShows, liked, id, img, title, IMG_BASE_URL, voteAvg, }
   }
 
   return (
-    <div className=" w-[200px] sm:w-[270px] inline-block cursor-pointer relative mr-4 hover:scale-100">
+    <div className=" w-[250px] sm:w-[300px] inline-block cursor-pointer relative mr-4 hover:scale-100">
       <div className="absolute w-full h-full bg-gradient-to-l from-[#000000b1]" />
       <p className="text-white absolute top-1 right-1 text-[1.1rem] font-bold">
         {voteAvg}

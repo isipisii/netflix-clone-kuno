@@ -1,14 +1,37 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ApiContext } from "../context/Context";
 import { MdArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { requests } from "../Requests";
 
 const Main = () => {
-  const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList } = useContext(ApiContext);
-  const randomMovie = movies[Math.floor(Math.random() * movies.length)];
-  
-  // BUG HERE
+  const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList } =
+    useContext(ApiContext);
+  // const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+  const [randomMovie, setRandomMovie] = useState();
+
+  useEffect(() => {
+    if (movies && movies.length > 0) {
+      const newRandomMovie = movies[Math.floor(Math.random() * movies.length)];
+      setRandomMovie(newRandomMovie);
+    }
+  }, [movies]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const date = new Date();
+      const hours = date.getHours();
+
+      if (hours === 0 || hours === 12) {
+        const newRandomMovie =
+          tvShows[Math.floor(Math.random() * tvShows.length)];
+        setRandomMovie(newRandomMovie);
+      }
+    }, 60 * 1000);
+
+    return () => clearInterval(intervalId);
+  }, [movies]);
+
   useEffect(() => {
     getMovies(requests.requestPopular);
   }, []);

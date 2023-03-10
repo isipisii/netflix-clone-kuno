@@ -18,7 +18,6 @@ const ShowPage = () => {
     getDetails();
   }, []);
 
-  console.log(tvShow);
   return (
     <div>
       <div className="w-full sm:h-[100vh] h-[100vh]">
@@ -56,7 +55,7 @@ const ShowPage = () => {
               <div className="w-[70%] md:w-[60%]">
                 <p className="text-[#ffffff9f] text-[.8rem] sm:text-[1rem] mt-4">
                   Aired since: {tvShowDetail?.first_air_date} •{" "}
-                  {tvShow?.episode_run_time} minutes
+                  {tvShowDetail?.episode_run_time} minutes
                 </p>
                 <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white drop-shadow-[100px] shadow-black">
                   {truncateString(tvShowDetail?.overview, 150)}

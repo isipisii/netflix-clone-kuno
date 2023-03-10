@@ -183,11 +183,11 @@ const Context = ({ children }) => {
         getMovies,
         truncateString,
         IMG_BASE_URL,
+
         fetchCasts,
         fetchDirector,
         director,
         casts,
-        fetch,
         directorProfile,
         fetchMovieUrl,
         trailerKey,

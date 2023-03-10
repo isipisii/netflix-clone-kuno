@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { tvShowsRequests } from "../Requests";
 import { MdArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -6,15 +6,38 @@ import { ApiContext } from "../context/Context";
 
 const MainTvShow = () => {
   const { IMG_BASE_URL, fetchTvShows, tvShows, truncateString } = useContext(ApiContext);
-  const randomTvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
+  const [randomTvShow, setRandomTvShow] = useState();
 
   useEffect(() => {
-    async function getTvShows(){
-      await fetchTvShows(tvShowsRequests.requestPopular)
+    if (tvShows && tvShows.length > 0) {
+      const newRandomTvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
+      setRandomTvShow(newRandomTvShow);
     }
-    getTvShows()
-  }, [])
-  console.log(tvShowsRequests.requestPopular)
+  }, [tvShows]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const date = new Date();
+      const hours = date.getHours();
+
+      if (hours === 0 || hours === 12) {
+        const newRandomTvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
+        setRandomTvShow(newRandomTvShow);
+      }
+    }, 60 * 1000);
+
+    return () => clearInterval(intervalId);
+  }, [tvShows]);
+
+  useEffect(() => {
+    async function getTvShows() {
+      await fetchTvShows(tvShowsRequests.requestPopular);
+    }
+    getTvShows();
+  }, []);
+
+  // console.log(randomTvShow);
+
   return ( 
     <>
       <div className="w-full h-[100vh] relative">
@@ -48,13 +71,13 @@ const MainTvShow = () => {
             </div>
             <div className="w-[70%] md:w-[60%]">
               <p className="text-[#ffffff76] mt-4 ">
-                Released: {randomTvShow?.release_date}
+                 Aired since: {randomTvShow?.first_air_date}
               </p>
               <p className="w-full text-[.9rem] md:text-[1rem] sm:max-w-[70%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[55%] text-white drop-shadow-[100px] shadow-black">
                 {truncateString(randomTvShow?.overview, 150)}
               </p>
             </div>
-            <Link to={`/shows/${randomTvShow?.id}`}>
+            <Link to={`/show/${randomTvShow?.id}`}>
               <p className="text-white backdrop-blur-lg flex hover:bg-[#ffffff2c] items-center justify-center text-[.9rem] py-[.4rem] sm:py-2 px-3 md:text-[1rem] sm:w-[150px] w-[140px] border-[1px] mt-[1rem] border-white">
                 More Details <MdArrowRight className="text-white" size={25} />
               </p>

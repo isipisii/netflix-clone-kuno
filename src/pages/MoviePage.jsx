@@ -22,7 +22,7 @@ const MoviePage = () => {
     fetchMovieUrl,
     addToWatchList,
   } = useContext(ApiContext);
-  
+
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 

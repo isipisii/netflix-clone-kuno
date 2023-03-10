@@ -9,7 +9,7 @@ const Watchlist = () => {
  
   return (
     <>
-      {watchList.length !== 0 || watchList !== null ? (
+      {watchList.length !== 0  ? (
         <div className="pt-[6rem] ">
           <div className="py-4 px-4 md:px-8">
             <h2 className="text-white font-medium text-[2rem] mb-[1rem] border-l-[10px] pl-2 border-red-600 ">
