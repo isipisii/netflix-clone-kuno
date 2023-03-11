@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 
 import MainMovie from "../components/MainMovie";
 import Row from "../components/Row";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -28,6 +29,7 @@ const Home = () => {
         fetchURL={requests.requestTopRated}
         rowID={nanoid()}
       />
+      <Footer/>
     </>
   );
 };

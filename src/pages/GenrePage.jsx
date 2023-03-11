@@ -4,6 +4,7 @@ import { ApiContext } from "../context/Context";
 
 import MovieCard from "../components/MovieCard";
 import Loader from "./page-components/Loader";
+import Footer from "../components/Footer";
 
 const GenrePage = () => {
   const { fetchFilteredGenreMovies, filteredGenreMovies, setFilteredGenreMovies, IMG_BASE_URL, } = useContext(ApiContext);
@@ -44,6 +45,7 @@ const GenrePage = () => {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

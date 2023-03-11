@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 
 import TvShowsRow from "./page-components/TvShowsRow";
 import MainTvShow from "../components/MainTvShow";
+import Footer from "../components/Footer";
 
 const TvShowsPage = () => {
   return (
@@ -28,6 +29,7 @@ const TvShowsPage = () => {
         fetchURL={tvShowsRequests.requestOnTheAir}
         rowID={nanoid()}
       />
+      <Footer/>
     </>
   );
 };

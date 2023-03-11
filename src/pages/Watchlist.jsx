@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft, } from "@fortawesome/free-solid-svg-icons";
 
+import Footer from "../components/Footer";
+
 const Watchlist = () => {
   const { watchList, deleteMovie, slideLeft, slideRight, IMG_BASE_URL} = useContext(ApiContext);
   console.log(watchList);
@@ -81,6 +83,7 @@ const Watchlist = () => {
           </div>
         </div>
       )}
+      <Footer/>
     </>
   );
 };
