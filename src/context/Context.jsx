@@ -20,39 +20,22 @@ const Context = ({ children }) => {
   const [tvShowDetail, setTvShowDetail] = useState();
   const [tvShows, setTvShows] = useState([]);
 
-  // const trailerKey = movieTrailers
-  // .filter((trailer) => trailer?.type === "Trailer")
-  // .map((trailer) => trailer?.key)[0];
-
   function addToWatchList(movie) {
     if (watchList.length === 0) {
       setWatchList((prevWatchList) => [...prevWatchList, movie]);
+      alert("Added to Watchlist.");
     } else {
       // check if the movie already exists in the watchList
-      const movieExists = watchList.some(item => item?.id === movie?.id);
+      const movieExists = watchList.some((item) => item?.id === movie?.id);
       if (movieExists) {
         alert("You've already added this movie to the watchlist");
       } else {
         setWatchList((prevWatchList) => [...prevWatchList, movie]);
+        alert("Added to Watchlist.");
       }
     }
   }
 
-  // 
-  // function checkIfShowOrMovieExisted(movie) {
-  //   if (watchList.length === 0) {
-  //     addToWatchList(movie);
-  //   } else {
-  //     // check if the movie already exists in the watchList
-  //     const movieExists = watchList.some(item => item?.id === movie?.id);
-  //     if (movieExists) {
-  //       alert("You've already added this movie to the watchlist");
-  //     } else {
-  //       addToWatchList(movie);
-  //     }
-  //   }
-  // }
-  
   //delete movie function for watchlist page
   function deleteMovie(id) {
     const latestWatchList = watchList.filter((movie) => movie?.id !== id);
@@ -166,10 +149,10 @@ const Context = ({ children }) => {
   }
 
   // for fetching the movies from searchterm
-  async function fetchSearchedMovies(search) {
+  async function fetchSearchedMoviesAndShows(search) {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${VITE_MOVIE_API_KEY}&query=${search}`
+        `https://api.themoviedb.org/3/search/multi?api_key=${VITE_MOVIE_API_KEY}&query=${search}`
       );
       setSearchResults(response.data.results);
       console.log(search);
@@ -233,7 +216,7 @@ const Context = ({ children }) => {
         setSearchTerm,
         searchTerm,
         searchResults,
-        fetchSearchedMovies,
+        fetchSearchedMoviesAndShows,
 
         fetchTvShowDetails,
         tvShowDetail,

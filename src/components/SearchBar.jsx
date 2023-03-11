@@ -23,11 +23,14 @@ const SearchBar = () => {
         placeholder="Search movie"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="bg-[#1a1a1a88] p-[.5rem] w-[100%] text-white border-r border-[#5a5454] outline-none"
+        className="bg-[#1a1a1a88] p-[.5rem] w-[100%] text-white border-r border-[#5a5454] outline-none focus:bg-[#4e4747]"
       />
       <button
         className="text-white px-2 "
-        onClick={() => navigate(`/result/${searchTerm}`)}
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(`/result/${searchTerm}`);
+        }}
       >
         <FontAwesomeIcon icon={faMagnifyingGlass} className="text-[1.4rem]" />
       </button>

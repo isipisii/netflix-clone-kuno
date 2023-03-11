@@ -42,6 +42,7 @@ const NavBar = () => {
             className="w-[100px]"
           />
         </Link>
+        
         {/* for large screen links */}
         <div className="hidden sm:block">
           <div className="flex items-center gap-[1rem] ">

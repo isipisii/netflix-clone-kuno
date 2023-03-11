@@ -17,7 +17,7 @@ const Watchlist = () => {
               My List
             </h2>
             <div className="relative h-full flex items-center group">
-              <div className="absolute inset-x-0 h-full w-[4rem] left-0 bg-gradient-to-r from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
+              <div className="absolute inset-x-0 h-full w-[2rem] left-0 bg-gradient-to-r from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
               <FontAwesomeIcon
                 className="left-0 absolute text-[2.5rem]  text-[#ffffff5b] hover:text-[white] cursor-pointer z-10 hidden group-hover:block"
                 icon={faChevronLeft}
@@ -65,7 +65,7 @@ const Watchlist = () => {
                 icon={faChevronRight}
                 onClick={() => slideRight("slider")}
               />
-              <div className="absolute h-full w-[4rem] right-0 bg-gradient-to-l from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
+              <div className="absolute h-full w-[2rem] right-0 bg-gradient-to-l from-[#141414] via-[#141414a1] to-transparent z-[2]"></div>
             </div>
           </div>
         </div>
