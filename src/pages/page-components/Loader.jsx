@@ -2,7 +2,7 @@ import { TailSpin } from 'react-loader-spinner';
 
 const Loader = () => {
   return (
-    <div className="bg-[#141414] w-[100vw] h-[100vh] z-10 flex items-center justify-center">
+    <div className="bg-[#141414] w-[100vw] h-[100vh] z-10 flex items-center justify-center overflow-y-none">
       <TailSpin
         height="40"
         width="100"

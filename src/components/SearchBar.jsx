@@ -23,7 +23,7 @@ const SearchBar = () => {
         placeholder="Search movie or show..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="bg-[#1a1a1a88] p-[.5rem] w-[100%] text-white border-r border-[#5a5454] outline-none focus:bg-[#4e4747]"
+        className="bg-[#1a1a1a88] p-[.5rem] w-[100%] text-white border-r border-[#5a5454] outline-none"
       />
       <button
         className="text-white px-2 "

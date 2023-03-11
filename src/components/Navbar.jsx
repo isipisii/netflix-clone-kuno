@@ -104,7 +104,7 @@ const NavBar = () => {
       {/* TODOOOO */}
       {/* for mobile screen links */}
       {clicked && (
-        <div className="absolute flex items-center justify-center shadow-xl shadow-[#7c7b7b36] bg-[#141414] top-0 right-0 h-[100vh] w-[200px] px-[3rem] z-20">
+        <div className="absolute flex items-center justify-center sm:hidden shadow-xl shadow-[#7c7b7b36] bg-[#141414] top-0 right-0 h-[100vh] w-[200px] px-[3rem] z-20">
           <div className="flex flex-col items-start gap-[2rem]">
             <Link
               to="/"
