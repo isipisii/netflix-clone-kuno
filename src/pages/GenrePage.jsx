@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { ApiContext } from "../context/Context";
 
 import MovieCard from "../components/MovieCard";
+import Loader from "./page-components/Loader";
 
 const GenrePage = () => {
   const { fetchFilteredGenreMovies, filteredGenreMovies, setFilteredGenreMovies, IMG_BASE_URL, } = useContext(ApiContext);
@@ -20,7 +21,9 @@ const GenrePage = () => {
 
   // console.log(filteredGenreMovies)
 
-  return (
+  return loading ? (
+    <Loader/>
+  ) : (
     <div>
       <div className="pt-[6rem] mx-auto max-w-[1500px] md:px-4">
         <h2 className="text-white font-medium text-[2rem] mb-[1rem] mx-4  border-l-[10px] pl-2 border-red-600 ">

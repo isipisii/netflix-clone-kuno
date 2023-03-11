@@ -1,8 +1,18 @@
+import { TailSpin } from 'react-loader-spinner';
 
 const Loader = () => {
   return (
-    <div className="bg-black w-[100vw] h-[100vh] z-10">
-      <h1 className="text-stone-100 text-[5rem]">load</h1>
+    <div className="bg-[#141414] w-[100vw] h-[100vh] z-10 flex items-center justify-center">
+      <TailSpin
+        height="40"
+        width="100"
+        color="red"
+        ariaLabel="tail-spin-loading"
+        radius="1"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
     </div>
   );
 };

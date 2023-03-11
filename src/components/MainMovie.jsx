@@ -4,7 +4,7 @@ import { MdArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { requests } from "../Requests";
 
-const Main = () => {
+const MainMovie = () => {
   const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList} =
     useContext(ApiContext);
   // const randomMovie = movies[Math.floor(Math.random() * movies.length)];
@@ -87,4 +87,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainMovie;

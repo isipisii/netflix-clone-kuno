@@ -1,13 +1,13 @@
 import { requests } from "../Requests";
 import { nanoid } from "nanoid";
 
-import Main from "../components/Main";
+import MainMovie from "../components/MainMovie";
 import Row from "../components/Row";
 
 const Home = () => {
   return (
     <>
-      <Main />
+      <MainMovie />
       <Row
         title="Trending"
         fetchURL={requests.requestTrending}

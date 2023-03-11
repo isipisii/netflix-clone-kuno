@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 
 import { ApiContext } from "../context/Context";
+import Loader from "./page-components/Loader";
 
 const ShowPage = () => {
   const { tvShowDetail, fetchTvShowDetails, IMG_BASE_URL, truncateString, addToWatchList, } = useContext(ApiContext);
@@ -18,7 +19,11 @@ const ShowPage = () => {
     getDetails();
   }, []);
 
-  return (
+  console.log(tvShowDetail);
+  
+  return loading ? (
+    <Loader/>
+  ) : (
     <div>
       <div className="w-full sm:h-[100vh] h-[100vh]">
         <div className="w-full h-full relative">

@@ -1,24 +1,25 @@
 import { ApiContext } from "../context/Context";
 import { useContext, useEffect, useState } from "react";
 
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import Loader from "../pages/page-components/Loader";
 import MovieCard from "./MovieCard";
 
 const SearchResults = ({ searchTerm }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { searchResults, IMG_BASE_URL, fetchSearchedMoviesAndShows } = useContext(ApiContext);
 
   useEffect(() => {
     async function getSearchedMovies() {
-      setIsLoading(true);
+      setLoading(true);
       await fetchSearchedMoviesAndShows(searchTerm);
-      setIsLoading(false);
+      setLoading(false);
     }
     getSearchedMovies();
   }, [searchTerm]);
 
-  return (
+  return loading ? (
+    <Loader/>
+  ) : ( 
     <div>
       <div className="pt-[7rem] md:pt-[6rem] mx-auto max-w-[1400px] md:px-4">
         <h2 className="text-white font-medium text-[2rem] mb-[1rem] mx-4 md:mx-8  border-l-[10px] pl-2 border-red-600 ">
