@@ -37,17 +37,3 @@ body{
     height: 100%;
     position: absolute;
 }
-
-.fade-in {
-    animation-name: fade-in;
-    animation-duration: 0.3s;
-  }
-  
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
