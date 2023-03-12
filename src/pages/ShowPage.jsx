@@ -5,6 +5,10 @@ import { ApiContext } from "../context/Context";
 import Loader from "./page-components/Loader";
 import Footer from "../components/Footer";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+
+
 const ShowPage = () => {
   const { tvShowDetail, fetchTvShowDetails, IMG_BASE_URL, truncateString, addToWatchList, } = useContext(ApiContext);
 
@@ -45,6 +49,7 @@ const ShowPage = () => {
               </h1>
               <div>
                 <button className="border text-[.9rem] md:text-[1rem] bg-red-600 py-2 px-5 md:px-8 border-red-600 text-white">
+                  <FontAwesomeIcon icon={faPlay} className="mr-2 text-[1.1rem]" />{" "}
                   Play
                 </button>
                 <button
