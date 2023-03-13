@@ -15,18 +15,6 @@ const Watchlist = () => {
   // console.log(watchList);
   // console.log(watchList.map((item) => item.type));
 
-  function checkType(id, type) {
-    let link = "";
-
-    if (type === "movie") {
-      link = `/movie/${id}`;
-    } else if (type === "tvshow") {
-      link = `/show/${id}`;
-    } else console.log("Invalid");
-
-    return link;
-  }
-
   return (
     <>
       {watchList.length !== 0 ? (
