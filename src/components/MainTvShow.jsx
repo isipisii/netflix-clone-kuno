@@ -5,17 +5,15 @@ import { ApiContext } from "../context/Context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import { faCircleInfo, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 
 const MainTvShow = () => {
-  const { IMG_BASE_URL, fetchTvShows, tvShows, truncateString } =
-    useContext(ApiContext);
+  const { IMG_BASE_URL, fetchTvShows, tvShows, truncateString, addToWatchList} = useContext(ApiContext);
   const [randomTvShow, setRandomTvShow] = useState();
 
   useEffect(() => {
     if (tvShows && tvShows.length > 0) {
-      const newRandomTvShow =
-        tvShows[Math.floor(Math.random() * tvShows.length)];
+      const newRandomTvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
       setRandomTvShow(newRandomTvShow);
     }
   }, [tvShows]);
@@ -26,8 +24,7 @@ const MainTvShow = () => {
       const hours = date.getHours();
 
       if (hours === 0 || hours === 12) {
-        const newRandomTvShow =
-          tvShows[Math.floor(Math.random() * tvShows.length)];
+        const newRandomTvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
         setRandomTvShow(newRandomTvShow);
       }
     }, 60 * 1000);
@@ -42,7 +39,7 @@ const MainTvShow = () => {
     getTvShows();
   }, []);
 
-  // console.log(randomTvShow);
+  console.log(randomTvShow);
 
   return (
     <>

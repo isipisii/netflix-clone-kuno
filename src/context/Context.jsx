@@ -46,7 +46,8 @@ const Context = ({ children }) => {
   async function getMovies(url) {
     try {
       const response = await axios.get(url);
-      setMovies(response.data.results);
+      const moviesWithType = response.data.results.map(movie => ({...movie, type: "movie"}))
+      setMovies(moviesWithType);
     } catch (error) {
       console.error(error);
     }
@@ -58,7 +59,7 @@ const Context = ({ children }) => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${VITE_MOVIE_API_KEY}&language=en-US`
       );
-      setMovieDetail(response.data);
+      setMovieDetail({...response.data, type: "movie"});
     } catch (error) {
       console.error(error);
     }
@@ -114,12 +115,7 @@ const Context = ({ children }) => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${VITE_MOVIE_API_KEY}&with_genres=${id}`
       );
-      const moviesWithLiked = response.data.results.map((movie) => {
-        return {
-          ...movie,
-          liked: false,
-        };
-      });
+      const moviesWithLiked = response.data.results.map((movie) => ({...movie, liked: false,}));
       setFilteredGenreMovies(moviesWithLiked);
     } catch (error) {
       console.error(error);
@@ -167,7 +163,7 @@ const Context = ({ children }) => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/tv/${id}?api_key=${VITE_MOVIE_API_KEY}&language=en-US`
       );
-      setTvShowDetail(response.data);
+      setTvShowDetail({...response.data, type: "tvshow"});
     } catch (error) {
       console.error(error);
     }
@@ -177,7 +173,8 @@ const Context = ({ children }) => {
   async function fetchTvShows(url) {
     try {
       const response = await axios.get(url);
-      setTvShows(response.data.results);
+      const tvShowsWithType = response.data.results.map(tvShow => ({...tvShow, type:"tvshow"}))
+      setTvShows(tvShowsWithType);
     } catch (error) {
       console.error(error);
     }

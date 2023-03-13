@@ -2,17 +2,34 @@ import { ApiContext } from "../context/Context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faChevronLeft, } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Footer from "../components/Footer";
 
 const Watchlist = () => {
-  const { watchList, deleteMovie, slideLeft, slideRight, IMG_BASE_URL} = useContext(ApiContext);
-  console.log(watchList);
-  
+  const { watchList, deleteMovie, slideLeft, slideRight, IMG_BASE_URL } =
+    useContext(ApiContext);
+  // console.log(watchList);
+  // console.log(watchList.map((item) => item.type));
+
+  function checkType(id, type) {
+    let link = "";
+
+    if (type === "movie") {
+      link = `/movie/${id}`;
+    } else if (type === "tvshow") {
+      link = `/show/${id}`;
+    } else console.log("Invalid");
+
+    return link;
+  }
+
   return (
     <>
-      {watchList.length !== 0  ? (
+      {watchList.length !== 0 ? (
         <div className="pt-[6rem] ">
           <div className="py-4 px-4 md:px-8">
             <h2 className="text-white font-medium text-[2rem] mb-[1rem] border-l-[10px] pl-2 border-red-600 ">
@@ -31,30 +48,30 @@ const Watchlist = () => {
                 id={"slider"}
                 className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
               >
-                {watchList.map((movie, index) => (
+                {watchList.map((item, index) => (
                   <div
                     className=" w-[250px] sm:w-[270px] overflow-y-hidden inline-block cursor-pointer relative mr-4"
                     key={index}
                   >
                     <div className="absolute w-full h-full bg-gradient-to-l from-[#000000b1]" />
                     <p className="text-white absolute top-1 right-1 text-[1.1rem] font-bold">
-                      {movie?.vote_average}
+                      {item?.vote_average}
                     </p>
                     <img
                       className="w-full h-full block"
-                      src={`${IMG_BASE_URL}${movie?.poster_path}`}
-                      alt={movie?.title}
+                      src={`${IMG_BASE_URL}${item?.poster_path}`}
+                      alt={item?.title}
                     />
                     <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
                       <button
                         className="text-white"
-                        onClick={() => deleteMovie(movie?.id)}
+                        onClick={() => deleteMovie(item?.id)}
                       >
                         Delete
                       </button>
-                      <Link to={`/movie/${movie?.id}`}>
+                      <Link to={item.type === "tvshow" ? `/show/${item?.id}` : item.type === "movie" && `/movie/${item?.id}`}>
                         <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
-                          {movie?.title}
+                          {item?.title}
                         </p>
                       </Link>
                     </div>
@@ -83,7 +100,7 @@ const Watchlist = () => {
           </div>
         </div>
       )}
-      <Footer/>
+      <Footer />
     </>
   );
 };
