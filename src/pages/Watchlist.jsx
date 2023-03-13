@@ -50,7 +50,7 @@ const Watchlist = () => {
                       src={`${IMG_BASE_URL}${item?.poster_path}`}
                       alt={item?.title}
                     />
-                    <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
+                    <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 transition-all duration-200 ease-in-out text-white">
                       <button
                         className="text-white"
                         onClick={() => deleteMovie(item?.id)}
