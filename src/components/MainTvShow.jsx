@@ -9,28 +9,7 @@ import { faCircleInfo} from "@fortawesome/free-solid-svg-icons";
 
 const MainTvShow = () => {
   const { IMG_BASE_URL, fetchTvShows, tvShows, truncateString, addToWatchList} = useContext(ApiContext);
-  const [randomTvShow, setRandomTvShow] = useState();
-
-  useEffect(() => {
-    if (tvShows && tvShows.length > 0) {
-      const newRandomTvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
-      setRandomTvShow(newRandomTvShow);
-    }
-  }, [tvShows]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const date = new Date();
-      const hours = date.getHours();
-
-      if (hours === 0 || hours === 12) {
-        const newRandomTvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
-        setRandomTvShow(newRandomTvShow);
-      }
-    }, 60 * 1000);
-
-    return () => clearInterval(intervalId);
-  }, [tvShows]);
+  const randomTvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
 
   useEffect(() => {
     async function getTvShows() {

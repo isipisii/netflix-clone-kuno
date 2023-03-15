@@ -15,7 +15,6 @@ const Context = ({ children }) => {
   const [watchList, setWatchList] = useState([]);
   const [filteredGenreMovies, setFilteredGenreMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [tvShowDetail, setTvShowDetail] = useState();
   const [tvShows, setTvShows] = useState([]);
@@ -209,9 +208,7 @@ const Context = ({ children }) => {
         fetchFilteredGenreMovies,
         filteredGenreMovies,
         setFilteredGenreMovies,
-
-        setSearchTerm,
-        searchTerm,
+        
         searchResults,
         fetchSearchedMoviesAndShows,
 

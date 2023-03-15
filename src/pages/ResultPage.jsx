@@ -9,7 +9,6 @@ const ResultPage = () => {
   return (
     <>
        <SearchResults searchTerm={search_term} />
-       <Footer/>
     </>
   );
 };
