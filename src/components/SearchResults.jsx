@@ -16,7 +16,7 @@ const SearchResults = ({ searchTerm }) => {
     }
     getSearchedMovies();
   }, [searchTerm]);
-
+  console.log(searchResults);
   return loading ? (
     <Loader/>
   ) : ( 
@@ -31,14 +31,15 @@ const SearchResults = ({ searchTerm }) => {
           {searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1)}
         </h2>
         <div className="flex flex-wrap mx-auto w-full gap-4 justify-center">
-          {searchResults.map((movie, index) =>
-              <MovieCard
-                id={movie?.id}
-                img={movie?.poster_path}
-                title={movie?.title}
+          {searchResults.map((item, index) =>
+             <MovieCard
+                id={item?.id}
+                img={item?.poster_path}
+                title={item?.title}
                 IMG_BASE_URL={IMG_BASE_URL}
                 key={index}
-                voteAvg={movie?.vote_average}
+                voteAvg={item?.vote_average}
+                type={item?.media_type}
               />
           )}
         </div>

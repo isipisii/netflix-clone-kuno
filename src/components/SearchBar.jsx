@@ -1,5 +1,4 @@
-import { useContext, useRef } from "react";
-import { ApiContext } from "../context/Context";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,9 +10,9 @@ const SearchBar = () => {
 
   function handleSearch(e){
     e.preventDefault();
-    const searchTerm = inputRef.current.value
+    let searchTerm = inputRef.current.value
     navigate(`/result/${searchTerm}`);
-    searchTerm = null;
+    searchTerm = "";
   }
 
   return (

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const MovieCard = ({ setMovies, liked, id, img, title, IMG_BASE_URL, voteAvg, }) => {
+const MovieCard = ({ setMovies, liked, id, img, title, IMG_BASE_URL, voteAvg, type }) => {
   function likeHandler(id) {
     setMovies((prevMovies) => {
       return prevMovies.map((movie) => {
@@ -29,11 +29,19 @@ const MovieCard = ({ setMovies, liked, id, img, title, IMG_BASE_URL, voteAvg, })
         alt={title}
       />
       <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 transition-all duration-200 ease-in-out text-white ">
-        <Link to={`/movie/${id}`}>
-          <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center w-full">
-            {title}
-          </p>
-        </Link>
+        {type === undefined ? 
+          <Link to={ `/movie/${id}`}>
+            <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center w-full">
+              {title}
+            </p>
+          </Link>
+          :   
+          <Link to={type ===  "tv" ? `/show/${id}` : type === "movie" && `/movie/${id}`}>
+            <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center w-full">
+              {title}
+            </p>
+          </Link>
+        }
         <p onClick={() => likeHandler(id)}>
           {liked ? (
             <FaHeart className="absolute top-4 left-4 text-gray-300" />

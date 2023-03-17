@@ -10,7 +10,6 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 const MainMovie = () => {
   const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList } =
     useContext(ApiContext);
-  // const randomMovie = movies[Math.floor(Math.random() * movies.length)];
   const [randomMovie, setRandomMovie] = useState();
 
   useEffect(() => {
