@@ -6,33 +6,12 @@ import { requests } from "../Requests";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { random } from "nanoid";
 
 const MainMovie = () => {
   const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList } =
     useContext(ApiContext);
-  const [randomMovie, setRandomMovie] = useState();
-
-  useEffect(() => {
-    if (movies && movies.length > 0) {
-      const newRandomMovie = movies[Math.floor(Math.random() * movies.length)];
-      setRandomMovie(newRandomMovie);
-    }
-  }, [movies]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const date = new Date();
-      const hours = date.getHours();
-
-      if (hours === 0 || hours === 12) {
-        const newRandomMovie =
-          tvShows[Math.floor(Math.random() * tvShows.length)];
-        setRandomMovie(newRandomMovie);
-      }
-    }, 60 * 1000);
-
-    return () => clearInterval(intervalId);
-  }, [movies]);
+  const [randomMovie] = useState(movies[Math.floor(Math.random() * movies.length)])
 
   useEffect(() => {
     getMovies(requests.requestPopular);
