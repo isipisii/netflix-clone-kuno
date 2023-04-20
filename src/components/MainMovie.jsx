@@ -6,12 +6,11 @@ import { requests } from "../Requests";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import { random } from "nanoid";
 
 const MainMovie = () => {
   const { movies, getMovies, truncateString, IMG_BASE_URL, addToWatchList } =
     useContext(ApiContext);
-  const [randomMovie] = useState(movies[Math.floor(Math.random() * movies.length)])
+  const randomMovie = movies[Math.floor(Math.random() * movies.length)]
 
   useEffect(() => {
     getMovies(requests.requestPopular);
